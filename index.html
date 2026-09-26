@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rock Paper Scissors</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: white;
+            margin: 0;
+            padding: 30px 10px;
+        }
+
+        h1 {
+            font-size: 35px;
+            margin-bottom: 30px;
+        }
+
+        .game {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .computer {
+            font-size: 22px;
+            margin: 25px;
+            font-weight: bold;
+        }
+
+        button {
+            display: block;
+            width: 220px;
+            margin: 15px auto;
+            padding: 18px;
+            font-size: 22px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .rock {
+            background: blue;
+            color: white;
+        }
+
+        .paper {
+            background: lime;
+            color: red;
+        }
+
+        .scissors {
+            background: red;
+            color: yellow;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <h1>ROCK PAPER AND SCISSORS</h1>
+
+    <div class="computer">
+        Computer Choice:
+        <span id="computerChoice">?</span>
+    </div>
+
+    <button class="rock" onclick="playGame('ROCK')">
+        ROCK
+    </button>
+
+    <button class="paper" onclick="playGame('PAPER')">
+        PAPER
+    </button>
+
+    <button class="scissors" onclick="playGame('SCISSORS')">
+        SCISSORS
+    </button>
+
+    <div id="result">
+        Choose your move!
+    </div>
+
+</div>
+
+<script>
+
+function playGame(playerChoice) {
+
+    // Computer choices
+    let choices = ["ROCK", "PAPER", "SCISSORS"];
+
+    // Pick random computer choice
+    let computerChoice =
+        choices[Math.floor(Math.random() * choices.length)];
+
+    // Display computer choice
+    document.getElementById("computerChoice").textContent =
+        computerChoice;
+
+    // Decide result
+    if (playerChoice === computerChoice) {
+
+        document.getElementById("result").textContent =
+            "IT'S A TIE!";
+
+    }
+    else if (
+        (playerChoice === "ROCK" && computerChoice === "SCISSORS") ||
+        (playerChoice === "PAPER" && computerChoice === "ROCK") ||
+        (playerChoice === "SCISSORS" && computerChoice === "PAPER")
+    ) {
+
+        document.getElementById("result").textContent =
+            "YOU WIN!";
+
+    }
+    else {
+
+        document.getElementById("result").textContent =
+            "YOU LOSE!";
+
+    }
+}
+
+</script>
+
+</body>
+</html>
